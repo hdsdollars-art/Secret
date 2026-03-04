@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Untuk Kamu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  flex-direction:column;
+}
+
+#teks{
+  width:80%;
+  font-size:18px;
+  line-height:1.6;
+  min-height:150px;
+}
+
+button{
+  padding:12px 25px;
+  background:white;
+  color:black;
+  border:none;
+  border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="musik" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<h2>Untuk Kamu</h2>
+<div id="teks"></div>
+<button onclick="mulai()">Klik kalau kamu siap</button>
+
+<script>
+const kalimat = [
+"Kalau kamu membaca ini...",
+"Berarti aku memilih untuk jujur.",
+"",
+"Aku nggak pernah ingin terburu-buru.",
+"Tapi perasaan ini tumbuh pelan-pelan.",
+"",
+"Aku suka kamu.",
+"",
+"Aku nggak minta jawaban sekarang.",
+"Aku akan menanyakan semuanya di bulan April.",
+"",
+"Aku akan tunggu sampai waktunya."
+];
+
+let i=0;
+let j=0;
+
+function ketik(){
+if(i<kalimat.length){
+if(j<kalimat[i].length){
+document.getElementById("teks").innerHTML += kalimat[i].charAt(j);
+j++;
+setTimeout(ketik,50);
+}else{
+document.getElementById("teks").innerHTML += "<br>";
+i++;
+j=0;
+setTimeout(ketik,600);
+}
+}
+}
+
+function mulai(){
+document.querySelector("button").style.display="none";
+document.getElementById("musik").play();
+ketik();
+}
+</script>
+
+</body>
+</html>
